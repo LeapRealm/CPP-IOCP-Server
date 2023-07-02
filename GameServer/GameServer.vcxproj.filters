@@ -7,6 +7,9 @@
     <Filter Include="Utils">
       <UniqueIdentifier>{10b2bbf6-e00b-4e41-9e7b-960469c1ff31}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Lesson">
+      <UniqueIdentifier>{0dd30636-47a9-478d-a4d2-c25564b51021}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameServer.cpp">
@@ -14,6 +17,15 @@
     </ClCompile>
     <ClCompile Include="pch.cpp">
       <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="01_Create Threads.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
+    <ClCompile Include="02_Atomic.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
+    <ClCompile Include="03_Lock.cpp">
+      <Filter>Lesson</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
