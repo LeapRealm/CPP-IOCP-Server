@@ -27,10 +27,25 @@
     <ClCompile Include="03_Lock.cpp">
       <Filter>Lesson</Filter>
     </ClCompile>
+    <ClCompile Include="04_1_DeadLock.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
+    <ClCompile Include="04_2_UserManager.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
+    <ClCompile Include="04_3_AccountManager.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
       <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="04_2_UserManager.h">
+      <Filter>Lesson</Filter>
+    </ClInclude>
+    <ClInclude Include="04_3_AccountManager.h">
+      <Filter>Lesson</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

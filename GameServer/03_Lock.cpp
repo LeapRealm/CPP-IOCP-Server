@@ -55,7 +55,7 @@ void Push()
 	}
 }
 
-void main()
+void lesson_03()
 {
 	thread t1(Push);
 	thread t2(Push);
