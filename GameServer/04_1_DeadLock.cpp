@@ -22,7 +22,7 @@ void Func2()
 	}
 }
 
-void main()
+void lesson_04()
 {
 	thread t1(Func1);
 	thread t2(Func2);
@@ -35,9 +35,9 @@ void main()
 	// etc.
 	mutex m1;
 	mutex m2;
-	lock(m1, m2); // m1.lock(); m2.lock(); -> �׻� ���� ������ ����ȴ�
+	lock(m1, m2); // m1.lock(); m2.lock(); -> 항상 같은 순서가 보장된다
 
-	// adopt_lock : �̹� lock�� ���´ϱ�, ���߿� �Ҹ�� �� Ǯ���ֱ⸸ ��
+	// adopt_lock : 이미 lock된 상태니까, 나중에 소멸될 때 풀어주기만 해
 	lock_guard<mutex> g1(m1, adopt_lock);
 	lock_guard<mutex> g2(m2, adopt_lock);
 }

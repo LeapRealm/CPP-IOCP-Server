@@ -36,6 +36,9 @@
     <ClCompile Include="04_3_AccountManager.cpp">
       <Filter>Lesson</Filter>
     </ClCompile>
+    <ClCompile Include="05_SpinLock.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
