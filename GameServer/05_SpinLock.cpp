@@ -71,7 +71,7 @@ void Sub2()
 	}
 }
 
-void main()
+void lesson_05()
 {
 	thread t1(Add2);
 	thread t2(Sub2);

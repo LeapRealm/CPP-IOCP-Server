@@ -39,6 +39,18 @@
     <ClCompile Include="05_SpinLock.cpp">
       <Filter>Lesson</Filter>
     </ClCompile>
+    <ClCompile Include="06_Sleep.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
+    <ClCompile Include="07_Event.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
+    <ClCompile Include="08_ConditionVariable.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
+    <ClCompile Include="09_Future.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
