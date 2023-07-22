@@ -18,7 +18,7 @@
     <ClCompile Include="pch.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
-    <ClCompile Include="01_Create Threads.cpp">
+    <ClCompile Include="01_CreateThreads.cpp">
       <Filter>Lesson</Filter>
     </ClCompile>
     <ClCompile Include="02_Atomic.cpp">
@@ -49,6 +49,18 @@
       <Filter>Lesson</Filter>
     </ClCompile>
     <ClCompile Include="09_Future.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
+    <ClCompile Include="10_Cache.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
+    <ClCompile Include="11_CPUPipeline.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
+    <ClCompile Include="12_MemoryModel.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
+    <ClCompile Include="13_ThreadLocalStorage.cpp">
       <Filter>Lesson</Filter>
     </ClCompile>
   </ItemGroup>

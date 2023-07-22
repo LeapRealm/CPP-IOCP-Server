@@ -90,7 +90,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="01_Create Threads.cpp" />
+    <ClCompile Include="01_CreateThreads.cpp" />
     <ClCompile Include="02_Atomic.cpp" />
     <ClCompile Include="03_Lock.cpp" />
     <ClCompile Include="04_2_UserManager.cpp" />
@@ -109,6 +109,10 @@
     <ClCompile Include="07_Event.cpp" />
     <ClCompile Include="08_ConditionVariable.cpp" />
     <ClCompile Include="09_Future.cpp" />
+    <ClCompile Include="10_Cache.cpp" />
+    <ClCompile Include="11_CPUPipeline.cpp" />
+    <ClCompile Include="12_MemoryModel.cpp" />
+    <ClCompile Include="13_ThreadLocalStorage.cpp" />
     <ClCompile Include="GameServer.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
