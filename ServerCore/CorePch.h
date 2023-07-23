@@ -11,6 +11,11 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#include <thread>
+#include <mutex>
+#include <windows.h>
+#include <future>
+
 #include <iostream>
 using namespace std;
 

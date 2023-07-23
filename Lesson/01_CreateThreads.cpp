@@ -1,8 +1,4 @@
-#include "pch.h"
-#include <iostream>
-#include <thread>
-
-#include "CorePch.h"
+#include <CorePch.h>
 
 void HelloThread()
 {

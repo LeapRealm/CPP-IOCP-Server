@@ -1,7 +1,4 @@
-#include "pch.h"
 #include "CorePch.h"
-#include <iostream>
-#include <future>
 
 int64 Calculate()
 {

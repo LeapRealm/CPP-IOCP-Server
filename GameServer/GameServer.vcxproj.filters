@@ -7,9 +7,6 @@
     <Filter Include="Utils">
       <UniqueIdentifier>{10b2bbf6-e00b-4e41-9e7b-960469c1ff31}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Lesson">
-      <UniqueIdentifier>{0dd30636-47a9-478d-a4d2-c25564b51021}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameServer.cpp">
@@ -18,61 +15,10 @@
     <ClCompile Include="pch.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
-    <ClCompile Include="01_CreateThreads.cpp">
-      <Filter>Lesson</Filter>
-    </ClCompile>
-    <ClCompile Include="02_Atomic.cpp">
-      <Filter>Lesson</Filter>
-    </ClCompile>
-    <ClCompile Include="03_Lock.cpp">
-      <Filter>Lesson</Filter>
-    </ClCompile>
-    <ClCompile Include="04_1_DeadLock.cpp">
-      <Filter>Lesson</Filter>
-    </ClCompile>
-    <ClCompile Include="04_2_UserManager.cpp">
-      <Filter>Lesson</Filter>
-    </ClCompile>
-    <ClCompile Include="04_3_AccountManager.cpp">
-      <Filter>Lesson</Filter>
-    </ClCompile>
-    <ClCompile Include="05_SpinLock.cpp">
-      <Filter>Lesson</Filter>
-    </ClCompile>
-    <ClCompile Include="06_Sleep.cpp">
-      <Filter>Lesson</Filter>
-    </ClCompile>
-    <ClCompile Include="07_Event.cpp">
-      <Filter>Lesson</Filter>
-    </ClCompile>
-    <ClCompile Include="08_ConditionVariable.cpp">
-      <Filter>Lesson</Filter>
-    </ClCompile>
-    <ClCompile Include="09_Future.cpp">
-      <Filter>Lesson</Filter>
-    </ClCompile>
-    <ClCompile Include="10_Cache.cpp">
-      <Filter>Lesson</Filter>
-    </ClCompile>
-    <ClCompile Include="11_CPUPipeline.cpp">
-      <Filter>Lesson</Filter>
-    </ClCompile>
-    <ClCompile Include="12_MemoryModel.cpp">
-      <Filter>Lesson</Filter>
-    </ClCompile>
-    <ClCompile Include="13_ThreadLocalStorage.cpp">
-      <Filter>Lesson</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
       <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="04_2_UserManager.h">
-      <Filter>Lesson</Filter>
-    </ClInclude>
-    <ClInclude Include="04_3_AccountManager.h">
-      <Filter>Lesson</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

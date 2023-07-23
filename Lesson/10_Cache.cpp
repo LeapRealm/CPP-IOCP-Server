@@ -1,7 +1,4 @@
-#include "pch.h"
 #include "CorePch.h"
-#include <iostream>
-#include <windows.h>
 
 int32 buffer[10000][10000];
 

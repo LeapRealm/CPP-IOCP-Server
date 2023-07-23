@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Lesson">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="13_ThreadLocalStorage.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
+    <ClCompile Include="01_CreateThreads.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
+    <ClCompile Include="02_Atomic.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
+    <ClCompile Include="03_Lock.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
+    <ClCompile Include="04_1_DeadLock.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
+    <ClCompile Include="04_2_UserManager.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
+    <ClCompile Include="04_3_AccountManager.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
+    <ClCompile Include="05_SpinLock.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
+    <ClCompile Include="06_Sleep.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
+    <ClCompile Include="07_Event.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
+    <ClCompile Include="08_ConditionVariable.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
+    <ClCompile Include="09_Future.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
+    <ClCompile Include="10_Cache.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
+    <ClCompile Include="11_CPUPipeline.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
+    <ClCompile Include="12_MemoryModel.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
+    <ClCompile Include="14_1_ConcurrentStack.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
+    <ClCompile Include="14_2_ConcurrentQueue.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="04_2_UserManager.h">
+      <Filter>Lesson</Filter>
+    </ClInclude>
+    <ClInclude Include="04_3_AccountManager.h">
+      <Filter>Lesson</Filter>
+    </ClInclude>
+    <ClInclude Include="14_1_ConcurrentStack.h">
+      <Filter>Lesson</Filter>
+    </ClInclude>
+    <ClInclude Include="14_2_ConcurrentQueue.h">
+      <Filter>Lesson</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

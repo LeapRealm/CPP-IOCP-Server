@@ -1,8 +1,4 @@
-#include "pch.h"
 #include "CorePch.h"
-#include <iostream>
-#include <mutex>
-#include <thread>
 
 mutex m4;
 queue<int32> q2;
