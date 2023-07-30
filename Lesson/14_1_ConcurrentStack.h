@@ -2,6 +2,10 @@
 
 #include <CorePch.h>
 
+/////////////////
+/// LockStack ///
+/////////////////
+
 template<typename T>
 class LockStack
 {
@@ -44,8 +48,12 @@ private:
 	condition_variable _condVar;
 };
 
+///////////////////////
+/// LockFreeStack 1 ///
+///////////////////////
+
 template<typename T>
-class LockFreeStack
+class LockFreeStack1
 {
 	struct Node
 	{
@@ -174,129 +182,94 @@ private:
 	atomic<Node*> _pendingList = nullptr;	// 삭제 되어야할 노드들 중에서 첫번째 노드
 };
 
+///////////////////////
+/// LockFreeStack 2 ///
+///////////////////////
+
 template<typename T>
-class LockFreeStack_SP
+class LockFreeStack2
 {
+	struct Node;
+
+	struct CountedNodePtr
+	{
+		int32 externalCount = 0;
+		Node* ptr = nullptr;
+	};
+
 	struct Node
 	{
-		Node(const T& value) : data(value), next(nullptr) { }
+		Node(const T& value) : data(make_shared<T>(value)) { }
 
 		shared_ptr<T> data;
-		shared_ptr<Node> next;
+		atomic<int32> internalCount = 0;
+		CountedNodePtr next;
 	};
 
 public:
 	void Push(const T& value)
 	{
-		Node* node = new Node(value);
-		node->next = _head;
+		CountedNodePtr node;
+		node.ptr = new Node(value);
+		node.externalCount = 1;
 
-		//if (_head == node->next)
-		//{
-		//	_head = node;
-		//	return true;
-		//}
-		//else
-		//{
-		//	node->next = _head;
-		//	return false;
-		//}
-
-		while (_head.compare_exchange_weak(node->next, node) == false) {}
+		node.ptr->next = _head;
+		while (_head.compare_exchange_weak(node.ptr->next, node) == false) { }
 	}
 
-	bool TryPop(T& value)
+	shared_ptr<T> TryPop()
 	{
-		++_popCount;
-
-		Node* oldHead = _head;
-
-		//if (_head == oldHead)
-		//{
-		//	_head = oldHead->next;
-		//	return true;
-		//}
-		//else
-		//{
-		//	oldHead = _head;
-		//	return false;
-		//}
-
-		while (oldHead && _head.compare_exchange_weak(oldHead, oldHead->next) == false) {}
-
-		if (oldHead == nullptr)
+		CountedNodePtr oldHead = _head;
+		while (true)
 		{
-			--_popCount;
-			return false;
-		}
+			// 참조권 획득 (externalCount를 현 시점 기준 +1 한 애가 이김)
+			IncreaseHeadCount(oldHead);
 
-		value = oldHead->data;
-		TryDelete(oldHead);
-		return true;
-	}
+			// 최소한 externalCount >= 2 일테니 안전하게 접근할 수 있음
+			Node* ptr = oldHead.ptr;
 
-	void TryDelete(Node* oldHead)
-	{
-		// 나말고 누가 있는가?
-		if (_popCount == 1)
-		{
-			// 만약 나 혼자라면 이왕 혼자인거 삭제 예약된 다른 데이터들도 삭제하려고 시도해보자
-			Node* node = _pendingList.exchange(nullptr);
+			// 데이터 없음
+			if (ptr == nullptr)
+				return shared_ptr<T>();
 
-			if (--_popCount == 0)
+			// 소유권 획득 (ptr->next로 head를 바꿔치기 한 애가 이김)
+			if (_head.compare_exchange_strong(oldHead, ptr->next))
 			{
-				// 끼어든 애가 없음 -> 삭제 진행
-				// 이제와서 끼어들어도, 어차피 데이터는 이미 분리해둔 상태
-				DeleteNodes(node);
+				shared_ptr<T> res;
+				res.swap(ptr->data);
+
+				// 나 말고 누군가가 더 있는가?
+				const int32 countIncrease = oldHead.externalCount - 2;
+				if (ptr->internalCount.fetch_add(countIncrease) == -countIncrease)
+					delete ptr;
+
+				return res;
 			}
-			else if (node)
+			// 참조권은 얻었으나, 소유권은 실패
+			else if (ptr->internalCount.fetch_sub(1) == 1)
 			{
-				// 누가 끼어들었으니 다시 갖다 놓자
-				ChainPendingNodeList(node);
+				// 내가 마지막이면 내가 삭제한다
+				delete ptr;
 			}
-
-			// 내 데이터는 삭제
-			delete oldHead;
-		}
-		else
-		{
-			// 다른 애가 있으면 지금 삭제하지 않고 삭제 예약만 한다
-			ChainPendingNode(oldHead);
-			--_popCount;
-		}
-	}
-
-	void ChainPendingNodeList(Node* first, Node* last)
-	{
-		last->next = _pendingList;
-
-		while (_pendingList.compare_exchange_weak(last->next, first) == false) {}
-	}
-
-	void ChainPendingNodeList(Node* node)
-	{
-		Node* last = node;
-		while (last->next)
-			last = last->next;
-
-		ChainPendingNodeList(node, last);
-	}
-
-	void ChainPendingNode(Node* node)
-	{
-		ChainPendingNodeList(node, node);
-	}
-
-	static void DeleteNodes(Node* node)
-	{
-		while (node)
-		{
-			Node* next = node->next;
-			delete node;
-			node = next;
 		}
 	}
 
 private:
-	atomic<Node*> _head = nullptr;
+	void IncreaseHeadCount(CountedNodePtr& oldCounter)
+	{
+		while (true)
+		{
+			CountedNodePtr newCounter = oldCounter;
+			newCounter.externalCount++;
+
+			if (_head.compare_exchange_strong(oldCounter, newCounter))
+			{
+				oldCounter.externalCount = newCounter.externalCount;
+				break;
+			}
+		}
+	}
+
+private:
+	atomic<CountedNodePtr>_head;
 };

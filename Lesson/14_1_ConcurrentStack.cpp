@@ -1,6 +1,6 @@
 #include "14_1_ConcurrentStack.h"
 
-LockFreeStack<int32> s;
+LockFreeStack2<int32> s;
 
 void StackPushTest()
 {
@@ -9,7 +9,7 @@ void StackPushTest()
 		int32 value = rand() % 100;
 		s.Push(value);
 
-		this_thread::sleep_for(10ms);
+		this_thread::sleep_for(1ms);
 	}
 }
 
@@ -17,9 +17,9 @@ void StackPopTest()
 {
 	while (true)
 	{
-		int32 data = 0;
-		if (s.TryPop(OUT data))
-			cout << data << endl;
+		auto data = s.TryPop();
+		if (data != nullptr)
+			cout << (*data) << endl;
 	}
 }
 
@@ -32,9 +32,4 @@ void lesson_14_1()
 	t1.join();
 	t2.join();
 	t3.join();
-}
-
-int main()
-{
-	lesson_14_1();
 }
