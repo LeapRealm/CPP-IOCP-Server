@@ -1,6 +1,6 @@
 #include "14_2_ConcurrentQueue.h"
 
-LockQueue<int32> q;
+LockFreeQueue<int32> q;
 
 void QueuePushTest()
 {
@@ -9,7 +9,7 @@ void QueuePushTest()
 		int32 value = rand() % 100;
 		q.Push(value);
 
-		this_thread::sleep_for(10ms);
+		this_thread::sleep_for(1ms);
 	}
 }
 
@@ -17,9 +17,9 @@ void QueuePopTest()
 {
 	while (true)
 	{
-		int32 data = 0;
-		if (q.TryPop(OUT data))
-			cout << data << endl;
+		auto data = q.TryPop();
+		if (data != nullptr)
+			cout << (*data) << endl;
 	}
 }
 
