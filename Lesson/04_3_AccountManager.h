@@ -1,34 +1,35 @@
 #pragma once
 
-#include "CorePch.h"
-
-class Account
+namespace Lesson
 {
-	// Variables...
-};
-
-class AccountManager
-{
-public:
-	static AccountManager* Instance()
+	class Account
 	{
-		static AccountManager instance;
-		return &instance;
-	}
+		// Variables...
+	};
 
-	Account* GetAccount(int32 id)
+	class AccountManager
 	{
-		lock_guard<mutex> guard(_mutex);
+	public:
+		static AccountManager* Instance()
+		{
+			static AccountManager instance;
+			return &instance;
+		}
 
-		if (_accounts.contains(id))
-			return _accounts[id];
+		Account* GetAccount(int32 id)
+		{
+			lock_guard<mutex> guard(_mutex);
 
-		return nullptr;
-	}
+			if (_accounts.contains(id))
+				return _accounts[id];
 
-	void ProcessLogin();
+			return nullptr;
+		}
 
-private:
-	mutex _mutex;
-	map<int32, Account*> _accounts;
-};
+		void ProcessLogin();
+
+	private:
+		mutex _mutex;
+		map<int32, Account*> _accounts;
+	};
+}

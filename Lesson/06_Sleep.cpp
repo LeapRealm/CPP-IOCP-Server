@@ -1,59 +1,62 @@
-#include "CorePch.h"
+#include "pch.h"
 
-class SleepLock
+namespace Lesson
 {
-public:
-	void lock()
+	class SleepLock
 	{
-		bool expected = false;
-		bool desired = true;
-
-		while (_locked.compare_exchange_strong(expected, desired) == false)
+	public:
+		void lock()
 		{
-			expected = false;
+			bool expected = false;
+			bool desired = true;
 
-			this_thread::sleep_for(100ms); // == this_thread::sleep_for(chrono::microseconds(100));
-			//this_thread::yield(); // == this_thread::sleep_for(0ms);
+			while (_locked.compare_exchange_strong(expected, desired) == false)
+			{
+				expected = false;
+
+				this_thread::sleep_for(100ms); // == this_thread::sleep_for(chrono::microseconds(100));
+				//this_thread::yield(); // == this_thread::sleep_for(0ms);
+			}
+		}
+
+		void unlock()
+		{
+			_locked.store(false);
+		}
+
+	private:
+		atomic<bool> _locked = false;
+	};
+
+	int32 sum2 = 0;
+	SleepLock sleepLock;
+
+	void Add3()
+	{
+		for (int32 i = 0; i < 10'0000; i++)
+		{
+			lock_guard<SleepLock> guard(sleepLock);
+			sum2++;
 		}
 	}
 
-	void unlock()
+	void Sub3()
 	{
-		_locked.store(false);
+		for (int32 i = 0; i < 10'0000; i++)
+		{
+			lock_guard<SleepLock> guard(sleepLock);
+			sum2--;
+		}
 	}
 
-private:
-	atomic<bool> _locked = false;
-};
-
-int32 sum2 = 0;
-SleepLock sleepLock;
-
-void Add3()
-{
-	for (int32 i = 0; i < 10'0000; i++)
+	void lesson_06()
 	{
-		lock_guard<SleepLock> guard(sleepLock);
-		sum2++;
+		thread t1(Add3);
+		thread t2(Sub3);
+
+		t1.join();
+		t2.join();
+
+		cout << sum2 << endl;
 	}
-}
-
-void Sub3()
-{
-	for (int32 i = 0; i < 10'0000; i++)
-	{
-		lock_guard<SleepLock> guard(sleepLock);
-		sum2--;
-	}
-}
-
-void lesson_06()
-{
-	thread t1(Add3);
-	thread t2(Sub3);
-
-	t1.join();
-	t2.join();
-
-	cout << sum2 << endl;
 }

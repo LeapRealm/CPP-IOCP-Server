@@ -1,34 +1,35 @@
 #pragma once
 
-#include "CorePch.h"
-
-class User
+namespace Lesson
 {
-	// Variables...
-};
-
-class UserManager
-{
-public:
-	static UserManager* Instance()
+	class User
 	{
-		static UserManager instance;
-		return &instance;
-	}
+		// Variables...
+	};
 
-	User* GetUser(int32 id)
+	class UserManager
 	{
-		lock_guard<mutex> guard(_mutex);
+	public:
+		static UserManager* Instance()
+		{
+			static UserManager instance;
+			return &instance;
+		}
 
-		if (_users.contains(id))
-			return _users[id];
+		User* GetUser(int32 id)
+		{
+			lock_guard<mutex> guard(_mutex);
 
-		return nullptr;
-	}
+			if (_users.contains(id))
+				return _users[id];
 
-	void ProcessSave();
+			return nullptr;
+		}
 
-private:
-	mutex _mutex;
-	map<int32, User*> _users;
-};
+		void ProcessSave();
+
+	private:
+		mutex _mutex;
+		map<int32, User*> _users;
+	};
+}

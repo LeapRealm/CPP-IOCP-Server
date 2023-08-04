@@ -1,35 +1,39 @@
+#include "pch.h"
 #include "14_1_ConcurrentStack.h"
 
-LockFreeStack2<int32> s;
-
-void StackPushTest()
+namespace Lesson
 {
-	while (true)
+	LockFreeStack2<int32> s;
+
+	void StackPushTest()
 	{
-		int32 value = rand() % 100;
-		s.Push(value);
+		while (true)
+		{
+			int32 value = rand() % 100;
+			s.Push(value);
 
-		this_thread::sleep_for(1ms);
+			this_thread::sleep_for(1ms);
+		}
 	}
-}
 
-void StackPopTest()
-{
-	while (true)
+	void StackPopTest()
 	{
-		auto data = s.TryPop();
-		if (data != nullptr)
-			cout << (*data) << endl;
+		while (true)
+		{
+			auto data = s.TryPop();
+			if (data != nullptr)
+				cout << (*data) << endl;
+		}
 	}
-}
 
-void lesson_14_1()
-{
-	thread t1(StackPushTest);
-	thread t2(StackPopTest);
-	thread t3(StackPopTest);
+	void lesson_14_1()
+	{
+		thread t1(StackPushTest);
+		thread t2(StackPopTest);
+		thread t3(StackPopTest);
 
-	t1.join();
-	t2.join();
-	t3.join();
+		t1.join();
+		t2.join();
+		t3.join();
+	}
 }

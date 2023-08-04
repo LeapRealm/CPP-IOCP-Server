@@ -1,31 +1,34 @@
-#include "CorePch.h"
+#include "pch.h"
 
-//_declspec(thread) int32 value;
-thread_local int32 LThreadId = 0;
-
-void ThreadMain(int32 threadId)
+namespace Lesson
 {
-	LThreadId = threadId;
+	//_declspec(thread) int32 value;
+	thread_local int32 LThreadId = 0;
 
-	while (true)
+	void ThreadMain(int32 threadId)
 	{
-		cout << "Hi! I am Thread " << LThreadId << endl;
-		this_thread::sleep_for(1s);
-	}
-}
+		LThreadId = threadId;
 
-void lesson_13()
-{
-	vector<thread> threads;
-
-	for (int32 i = 0; i < 10; i++)
-	{
-		int32 threadId = i + 1;
-		threads.push_back(thread(ThreadMain, threadId));
+		while (true)
+		{
+			cout << "Hi! I am Thread " << LThreadId << endl;
+			this_thread::sleep_for(1s);
+		}
 	}
 
-	for (thread& t : threads)
+	void lesson_13()
 	{
-		t.join();
+		vector<thread> threads;
+
+		for (int32 i = 0; i < 10; i++)
+		{
+			int32 threadId = i + 1;
+			threads.push_back(thread(ThreadMain, threadId));
+		}
+
+		for (thread& t : threads)
+		{
+			t.join();
+		}
 	}
 }

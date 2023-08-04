@@ -7,24 +7,63 @@
     <Filter Include="Utils">
       <UniqueIdentifier>{c8d37961-b2e7-4705-8fda-20f0b4eb0155}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{fd0e9aa8-ccd5-4d56-b22f-79b826c7e9c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thread">
+      <UniqueIdentifier>{a002c0ac-9605-4a4f-880a-26fa98b8af37}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h">
-      <Filter>Utils</Filter>
+    <ClInclude Include="Types.h">
+      <Filter>Main</Filter>
     </ClInclude>
     <ClInclude Include="CorePch.h">
-      <Filter>Utils</Filter>
+      <Filter>Main</Filter>
     </ClInclude>
-    <ClInclude Include="Types.h">
-      <Filter>Utils</Filter>
+    <ClInclude Include="pch.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreMacro.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreGlobal.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreTLS.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadManager.h">
+      <Filter>Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="Lock.h">
+      <Filter>Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="DeadLockProfiler.h">
+      <Filter>Thread</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="pch.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
     <ClCompile Include="CorePch.cpp">
-      <Filter>Utils</Filter>
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="CoreGlobal.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="CoreTLS.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadManager.cpp">
+      <Filter>Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="Lock.cpp">
+      <Filter>Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="DeadLockProfiler.cpp">
+      <Filter>Thread</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

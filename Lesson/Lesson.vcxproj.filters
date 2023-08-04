@@ -58,6 +58,12 @@
     <ClCompile Include="14_2_ConcurrentQueue.cpp">
       <Filter>Lesson</Filter>
     </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
+    <ClCompile Include="15_FindPrimeNumbers.cpp">
+      <Filter>Lesson</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="04_2_UserManager.h">
@@ -70,6 +76,9 @@
       <Filter>Lesson</Filter>
     </ClInclude>
     <ClInclude Include="14_2_ConcurrentQueue.h">
+      <Filter>Lesson</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
       <Filter>Lesson</Filter>
     </ClInclude>
   </ItemGroup>
