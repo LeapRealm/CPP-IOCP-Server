@@ -3,7 +3,7 @@
 
 #include "04_3_AccountManager.h"
 
-namespace Lesson
+namespace lesson_04
 {
 	void UserManager::ProcessSave()
 	{

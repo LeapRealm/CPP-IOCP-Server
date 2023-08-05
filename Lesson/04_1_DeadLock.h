@@ -1,9 +1,9 @@
-#include "pch.h"
+#pragma once
 
 #include "04_2_UserManager.h"
 #include "04_3_AccountManager.h"
 
-namespace Lesson
+namespace lesson_04
 {
 	void Func1()
 	{

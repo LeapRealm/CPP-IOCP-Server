@@ -1,6 +1,6 @@
-#include "pch.h"
+#pragma once
 
-namespace Lesson
+namespace lesson_11
 {
 	// 가시성
 	// - store를 RAM에 하지 않고 임시적으로 캐시에만 했다면, 다른 쓰레드가 RAM에서 load한 데이터가 최신 데이터가 아닐 수 있다

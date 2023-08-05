@@ -1,14 +1,14 @@
-#include "pch.h"
+#pragma once
 
-namespace Lesson
+namespace lesson_08
 {
-	mutex m4;
-	queue<int32> q2;
+	mutex m;
+	queue<int32> q;
 
 	// cv는 User-Level Object (커널 오브젝트가 아님)
 	condition_variable cv;
 
-	void Producer2()
+	void Producer()
 	{
 		while (true)
 		{
@@ -18,15 +18,15 @@ namespace Lesson
 			// 4) 조건변수를 통해 다른 쓰레드에게 통지
 
 			{
-				unique_lock<mutex> lock(m4);
-				q2.push(100);
+				unique_lock<mutex> lock(m);
+				q.push(100);
 			}
 
 			cv.notify_one(); // wait중인 쓰레드가 있으면 딱 1개를 깨운다
 		}
 	}
 
-	void Consumer2()
+	void Consumer()
 	{
 		while (true)
 		{
@@ -39,19 +39,19 @@ namespace Lesson
 			// Spurious Wakeup (가짜 기상)
 			// 다른 쓰레드가 새치기해서 먼저 처리해버릴 수 있음
 
-			unique_lock<mutex> lock(m4);
-			cv.wait(lock, []() { return q2.empty() == false; });
+			unique_lock<mutex> lock(m);
+			cv.wait(lock, []() { return q.empty() == false; });
 
-			int32 data = q2.front();
-			q2.pop();
-			cout << q2.size() << " : " << data << endl;
+			int32 data = q.front();
+			q.pop();
+			cout << q.size() << " : " << data << endl;
 		}
 	}
 
 	void lesson_08()
 	{
-		thread t1(Producer2);
-		thread t2(Consumer2);
+		thread t1(Producer);
+		thread t2(Consumer);
 
 		t1.join();
 		t2.join();

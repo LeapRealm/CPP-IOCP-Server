@@ -1,11 +1,7 @@
 #pragma once
 
-namespace Lesson
+namespace lesson_14
 {
-	/////////////////
-	/// LockStack ///
-	/////////////////
-
 	template<typename T>
 	class LockStack
 	{
@@ -47,10 +43,6 @@ namespace Lesson
 		mutex _mutex;
 		condition_variable _condVar;
 	};
-
-	///////////////////////
-	/// LockFreeStack 1 ///
-	///////////////////////
 
 	template<typename T>
 	class LockFreeStack1
@@ -182,10 +174,6 @@ namespace Lesson
 		atomic<Node*> _pendingList = nullptr;	// 삭제 되어야할 노드들 중에서 첫번째 노드
 	};
 
-	///////////////////////
-	/// LockFreeStack 2 ///
-	///////////////////////
-
 	template<typename T>
 	class LockFreeStack2
 	{
@@ -271,6 +259,40 @@ namespace Lesson
 		}
 
 	private:
-		atomic<CountedNodePtr>_head;
+		atomic<CountedNodePtr> _head;
 	};
+
+	LockFreeStack2<int32> s;
+
+	void StackPushTest()
+	{
+		while (true)
+		{
+			int32 value = rand() % 100;
+			s.Push(value);
+
+			this_thread::sleep_for(1ms);
+		}
+	}
+
+	void StackPopTest()
+	{
+		while (true)
+		{
+			auto data = s.TryPop();
+			if (data != nullptr)
+				cout << (*data) << endl;
+		}
+	}
+
+	void lesson_14_1()
+	{
+		thread t1(StackPushTest);
+		thread t2(StackPopTest);
+		thread t3(StackPopTest);
+
+		t1.join();
+		t2.join();
+		t3.join();
+	}
 }

@@ -1,8 +1,8 @@
-#include "pch.h"
+#pragma once
 
-namespace Lesson
+namespace lesson_07
 {
-	mutex m3;
+	mutex m;
 	queue<int32> q;
 	HANDLE handle;
 
@@ -11,7 +11,7 @@ namespace Lesson
 		while (true)
 		{
 			{
-				unique_lock<mutex> lock(m3);
+				unique_lock<mutex> lock(m);
 				q.push(100);
 			}
 
@@ -30,7 +30,7 @@ namespace Lesson
 			// ManualReset을 true로 설정했을 경우, 수동으로 Non-Signal로 세팅해줘야함
 			// ::ResetEvent(handle);
 
-			unique_lock<mutex> lock(m3);
+			unique_lock<mutex> lock(m);
 			while (q.empty() == false)
 			{
 				int32 data = q.front();

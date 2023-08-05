@@ -1,9 +1,9 @@
 #pragma once
 #include <functional>
 
-/*-------------------
-    ThreadManager
- ------------------*/
+/*-----------------------
+	 Thread Manager
+-----------------------*/
 
 class ThreadManager
 {

@@ -1,13 +1,13 @@
-#include "pch.h"
+#pragma once
 
-namespace Lesson
+namespace lesson_12
 {
 	atomic<bool> flag;
 
 	atomic<bool> ready;
 	int32 value;
 
-	void Producer3()
+	void Producer()
 	{
 		value = 10;
 		ready.store(true, memory_order::memory_order_seq_cst);
@@ -17,7 +17,7 @@ namespace Lesson
 		// -> 가시성 보장 & 코드 재배치 문제 해결
 	}
 
-	void Consumer3()
+	void Consumer()
 	{
 		while (ready.load() == false)
 			;
@@ -89,8 +89,8 @@ namespace Lesson
 		{
 			ready = false;
 			value = 0;
-			thread t1(Producer3);
-			thread t2(Consumer3);
+			thread t1(Producer);
+			thread t2(Consumer);
 			t1.join();
 			t2.join();
 

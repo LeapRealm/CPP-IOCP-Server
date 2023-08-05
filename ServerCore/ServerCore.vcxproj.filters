@@ -13,6 +13,9 @@
     <Filter Include="Thread">
       <UniqueIdentifier>{a002c0ac-9605-4a4f-880a-26fa98b8af37}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Memory">
+      <UniqueIdentifier>{a63fc3a5-dfcd-43d2-bb5d-20199d1cf37d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Types.h">

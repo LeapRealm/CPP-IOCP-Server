@@ -1,6 +1,6 @@
-#include "pch.h"
+#pragma once
 
-namespace Lesson
+namespace lesson_05
 {
 	class SpinLock
 	{
@@ -48,10 +48,10 @@ namespace Lesson
 	};
 
 	int32 sum = 0;
-	mutex m2;
+	mutex m;
 	SpinLock spinLock;
 
-	void Add2()
+	void Add()
 	{
 		for (int32 i = 0; i < 10'0000; i++)
 		{
@@ -60,7 +60,7 @@ namespace Lesson
 		}
 	}
 
-	void Sub2()
+	void Sub()
 	{
 		for (int32 i = 0; i < 10'0000; i++)
 		{
@@ -71,8 +71,8 @@ namespace Lesson
 
 	void lesson_05()
 	{
-		thread t1(Add2);
-		thread t2(Sub2);
+		thread t1(Add);
+		thread t2(Sub);
 
 		t1.join();
 		t2.join();

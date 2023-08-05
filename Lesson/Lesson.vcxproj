@@ -143,34 +143,34 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="01_CreateThreads.cpp" />
-    <ClCompile Include="02_Atomic.cpp" />
-    <ClCompile Include="03_Lock.cpp" />
-    <ClCompile Include="04_1_DeadLock.cpp" />
+    <ClInclude Include="01_CreateThreads.h" />
+    <ClInclude Include="02_Atomic.h" />
+    <ClInclude Include="03_Lock.h" />
+    <ClInclude Include="04_1_DeadLock.h" />
     <ClCompile Include="04_2_UserManager.cpp" />
     <ClCompile Include="04_3_AccountManager.cpp" />
-    <ClCompile Include="05_SpinLock.cpp" />
-    <ClCompile Include="06_Sleep.cpp" />
-    <ClCompile Include="07_Event.cpp" />
-    <ClCompile Include="08_ConditionVariable.cpp" />
-    <ClCompile Include="09_Future.cpp" />
-    <ClCompile Include="10_Cache.cpp" />
-    <ClCompile Include="11_CPUPipeline.cpp" />
-    <ClCompile Include="12_MemoryModel.cpp" />
-    <ClCompile Include="13_ThreadLocalStorage.cpp" />
-    <ClCompile Include="14_1_ConcurrentStack.cpp" />
-    <ClCompile Include="14_2_ConcurrentQueue.cpp" />
-    <ClCompile Include="15_FindPrimeNumbers.cpp" />
+    <ClInclude Include="05_SpinLock.h" />
+    <ClInclude Include="06_Sleep.h" />
+    <ClInclude Include="07_Event.h" />
+    <ClInclude Include="08_ConditionVariable.h" />
+    <ClInclude Include="09_Future.h" />
+    <ClInclude Include="10_Cache.h" />
+    <ClInclude Include="11_CPUPipeline.h" />
+    <ClInclude Include="12_MemoryModel.h" />
+    <ClInclude Include="13_ThreadLocalStorage.h" />
+    <ClInclude Include="15_FindPrimeNumbers.h" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Lesson.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="04_2_UserManager.h" />
     <ClInclude Include="04_3_AccountManager.h" />
     <ClInclude Include="14_1_ConcurrentStack.h" />
     <ClInclude Include="14_2_ConcurrentQueue.h" />
+    <ClInclude Include="16_RefCounting.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

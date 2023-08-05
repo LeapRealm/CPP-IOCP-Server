@@ -1,6 +1,6 @@
-#include "pch.h"
+#pragma once
 
-namespace Lesson
+namespace lesson_13
 {
 	//_declspec(thread) int32 value;
 	thread_local int32 LThreadId = 0;

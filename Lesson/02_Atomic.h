@@ -1,6 +1,6 @@
-#include "pch.h"
+#pragma once
 
-namespace Lesson
+namespace lesson_02
 {
 	// atomic : All-Or-Nothing
 

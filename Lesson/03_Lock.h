@@ -1,6 +1,6 @@
-#include "pch.h"
+#pragma once
 
-namespace Lesson
+namespace lesson_03
 {
 	vector<int32> v;
 

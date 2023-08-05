@@ -3,7 +3,7 @@
 
 #include "04_2_UserManager.h"
 
-namespace Lesson
+namespace lesson_04
 {
 	void AccountManager::ProcessLogin()
 	{

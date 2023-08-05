@@ -2,9 +2,9 @@
 
 #define OUT
 
-/*-------------------
-		Lock
- ------------------*/
+/*-----------------------
+	      Lock
+-----------------------*/
 
 #define USE_MANY_LOCKS(count)	Lock _locks[count];
 #define USE_LOCK				USE_MANY_LOCKS(1)
@@ -13,9 +13,9 @@
 #define WRITE_LOCK_IDX(idx)		WriteLockGuard writeLockGuard_##idx(_locks[idx], typeid(this).name());
 #define WRITE_LOCK				WRITE_LOCK_IDX(0)
 
-/*-------------------
-        Crash
- ------------------*/
+/*-----------------------
+		  Crash
+-----------------------*/
 
 #define CRASH(cause)						\
 {											\

@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Lesson
+namespace lesson_04
 {
 	class User
 	{
