@@ -17,6 +17,18 @@
 		  Crash
 -----------------------*/
 
+#ifdef _DEBUG
+#define xAlloc(size)	BaseAllocator::Alloc(size)
+#define xRelease(ptr)	BaseAllocator::Release(ptr)
+#else
+#define xAlloc(size)	BaseAllocator::Alloc(size)
+#define xRelease(ptr)	BaseAllocator::Release(ptr)
+#endif
+
+/*-----------------------
+		  Crash
+-----------------------*/
+
 #define CRASH(cause)						\
 {											\
 	uint32* crash = nullptr;				\

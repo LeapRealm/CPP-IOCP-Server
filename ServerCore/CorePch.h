@@ -20,3 +20,4 @@
 using namespace std;
 
 #include "Lock.h"
+#include "Memory.h"

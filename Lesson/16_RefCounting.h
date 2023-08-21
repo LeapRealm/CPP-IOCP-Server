@@ -74,7 +74,7 @@ namespace lesson_16
 		bool		operator<(const TSharedPtr& rhs) const { return _ptr < rhs._ptr; }
 		T*			operator*() { return _ptr; }
 		const T*	operator*() const { return _ptr; }
-		operator T* () const { return _ptr; }
+					operator T*() const { return _ptr; }
 		T*			operator->() { return _ptr; }
 		const T*	operator->() const { return _ptr; }
 
