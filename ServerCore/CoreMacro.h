@@ -14,7 +14,7 @@
 #define WRITE_LOCK				WRITE_LOCK_IDX(0)
 
 /*-----------------------
-		  Crash
+		 Memory
 -----------------------*/
 
 #ifdef _DEBUG
